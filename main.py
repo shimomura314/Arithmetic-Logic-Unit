@@ -1,4 +1,5 @@
 import adder
+import alu
 import gate
 import subtractor
 
@@ -25,8 +26,20 @@ def adder_checker():
         y = adder.full_adder(*x)
         print("%s + %s + %s = %s carry %s" %(x[0], x[1], x[2], y[0], y[1]))
     print(adder.n_bit_adder([0,1,0,1,0,1], [0,1,1,1]))
-    print(subtractor.substractor([0,1,0,1,0,1], [0,1,1,1]))
+    print(subtractor.substractor([0,1,0,1,0,1], [0,1,1,1,1,1]))
+
+
+def ALU_checker():
+    print(alu.ALU74381([0,1,1], [1,0,1], 0, 0 ,0))
+    print(alu.ALU74381([0,1,1], [1,0,1], 0, 0 ,1))
+    print(alu.ALU74381([0,1,1], [1,0,1], 0, 1 ,0))
+    print(alu.ALU74381([0,1,1], [1,0,1], 1, 0 ,0))
+    print(alu.ALU74381([0,1,1], [1,0,1], 0, 1 ,1))
+    print(alu.ALU74381([0,1,1], [1,0,1], 1, 1 ,0))
+    print(alu.ALU74381([0,1,1], [1,0,1], 1, 0, 1))
+    print(alu.ALU74381([0,1,1], [1,0,1], 1, 1, 1))
+    return
 
 
 if __name__ == "__main__":
-    adder_checker()
+    ALU_checker()
