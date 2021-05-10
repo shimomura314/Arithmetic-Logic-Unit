@@ -1,6 +1,6 @@
-import gate
 import adder
-
+import gate
+import subtractor
 
 def gate_checker():
     for x in [(0, 0, 0), (0, 0, 1), (0, 1, 0), (1, 0, 0), (0, 1, 1), (1, 0, 1), (1, 1, 0), (1, 1, 1)]:
@@ -24,6 +24,8 @@ def adder_checker():
     for x in [(0, 0, 0), (0, 0, 1), (0, 1, 0), (1, 0, 0), (0, 1, 1), (1, 0, 1), (1, 1, 0), (1, 1, 1)]:
         y = adder.full_adder(*x)
         print("%s + %s + %s = %s carry %s" %(x[0], x[1], x[2], y[0], y[1]))
+    print(adder.n_bit_adder([0,1,0,1,0,1], [0,1,1,1]))
+    print(subtractor.substractor([0,1,0,1,0,1], [0,1,1,1]))
 
 
 if __name__ == "__main__":
