@@ -1,9 +1,10 @@
 import numpy as np
 
-def AND(x1, x2):
-    x = np.array([x1, x2])
-    weight = np.array([1, 1])
-    bias = -1.5
+
+def AND(*x):
+    x = np.array(x)
+    weight = np.ones(len(x))
+    bias = -len(x) + 0.5
     temporary = np.sum( x*weight ) + bias
     if temporary <= 0:
         return 0

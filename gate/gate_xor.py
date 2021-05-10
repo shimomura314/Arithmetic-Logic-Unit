@@ -3,5 +3,7 @@ from .gate_nand import NAND
 from .gate_or import OR
 
 
-def XOR(x1, x2):
-    return AND(OR(x1, x2), NAND(x1, x2))
+def XOR(*x):
+    if sum(x)%2 == 1:
+        return 1
+    return 0
