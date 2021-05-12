@@ -1,5 +1,6 @@
 import adder
 import alu
+import control
 import gate
 import subtractor
 
@@ -30,16 +31,35 @@ def adder_checker():
 
 
 def ALU_checker():
-    print(alu.ALU74381([0,1,1], [1,0,1], 0, 0 ,0))
-    print(alu.ALU74381([0,1,1], [1,0,1], 0, 0 ,1))
-    print(alu.ALU74381([0,1,1], [1,0,1], 0, 1 ,0))
-    print(alu.ALU74381([0,1,1], [1,0,1], 1, 0 ,0))
-    print(alu.ALU74381([0,1,1], [1,0,1], 0, 1 ,1))
-    print(alu.ALU74381([0,1,1], [1,0,1], 1, 1 ,0))
-    print(alu.ALU74381([0,1,1], [1,0,1], 1, 0, 1))
-    print(alu.ALU74381([0,1,1], [1,0,1], 1, 1, 1))
+    for x,y in ([15,31], [123, 642], [12, 543]):
+        for s1, s2, s3 in (
+            [0, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0 ,0],
+            [0, 1, 1], [1, 0, 1], [1, 1, 0], [1, 1, 1],
+            ):
+            if not s1 and not s2 and not s3:
+                print("0000")
+            if not s1 and not s2 and s3:
+                print("%d - %d = %d" %(y, x, control.decoder(alu.ALU74381(x, y, s1, s2 ,s3))))
+            if not s1 and s2 and not s3:
+                print("%d - %d = %d" %(x, y, control.decoder(alu.ALU74381(x, y, s1, s2 ,s3))))
+            if not s1 and s2 and s3:
+                print("%d + %d = %d" %(x, y, control.decoder(alu.ALU74381(x, y, s1, s2 ,s3))))
+            if s1 and not s2 and not s3:
+                print("%d ^ %d = %d" %(x, y, control.decoder(alu.ALU74381(x, y, s1, s2 ,s3))))
+            if s1 and not s2 and s3:
+                print("%d | %d = %d" %(x, y, control.decoder(alu.ALU74381(x, y, s1, s2 ,s3))))
+            if s1 and s2 and not s3:
+                print("%d & %d = %d" %(x, y, control.decoder(alu.ALU74381(x, y, s1, s2 ,s3))))
+            if s1 and s2 and s3:
+                print("1111")
+    return
+
+
+def main():
     return
 
 
 if __name__ == "__main__":
+    # gate_checker()
+    # adder_checker()
     ALU_checker()
